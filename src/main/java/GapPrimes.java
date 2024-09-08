@@ -3,9 +3,9 @@ import java.util.List;
 
 public class GapPrimes {
 
-    public static void gapPrimeNumber(int gap, int start, int end) {
-        List<Integer> primes = new ArrayList<>();
-        if (end - start >= gap) {
+    public List<Integer> gapPrimeNumbers(int gap, int start, int end) {
+        ArrayList<Integer> primes = new ArrayList<>();
+        if (end - start >= gap && start > 1 && end > 1 && gap > 1) {
             int loop = end - start - gap;
             for (int i = 0; i <= loop; i++) {
 
@@ -30,19 +30,14 @@ public class GapPrimes {
                     if (secondPrime) {
                         primes.add(start);
                         primes.add(end);
-                        System.out.println(primes);
-                        break;
+                        return primes;
                     }
                 }
                 start += 1;
             }
 
-        } else {
-            System.out.println("no pair of prime numbers with a gap of " + gap);
         }
+        return List.of();
     }
 
-    public static void main(String[] args) {
-        gapPrimeNumber(4, 130, 200);
-    }
 }
